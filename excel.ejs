@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><%=title%></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <div id="menu-container" class="menu-container">
+
+        <div id="File" class="menu">File</div>
+        <div id="Home" class="menu">Home</div>
+        <div id="View" class="menu">View</div>
+        <div id="Help" class="menu">Help</div>
+
+    </div>
+
+    <div id="menu-option-container" class="menu-option-container">
+
+        <div id="File-menu-options" class="menu-options">
+
+            <div id="new" class="externs">
+                <p>New</p>
+                <img src="images/new-file.png">
+            </div>
+            <div id="open" class="externs">
+                <p>Open</p>
+                <img src="images/folder.png">
+            </div>
+            <div id="save" class="externs">
+                <p>Save</p>
+                <img src="images/save.png">
+            </div>
+
+        </div>
+
+
+        <div id="Home-menu-options" class="menu-options">
+
+            <div id="formatting-col" class="externs2">
+
+                <div class="font-row">
+
+                    <select id="font-family">
+                        <option value="cursive">Cursive</option>
+                        <option value="arial">Arial</option>
+                        <option value="sans-serif">Sans-Serif</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="serif">Serif</option>
+                    </select>
+
+                    <select id="font-size">
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="20">20</option>
+                        <option value="32">32</option>
+                    </select>
+                    
+                </div>
+
+                <div class="style-row"  >
+
+                    <button id="bold" class="style-buttons-1">
+                        <img  class="style-images-1" src="images/bold.png">
+                    </button>
+                    <button id="underline" class="style-buttons-1">
+                        <img  class="style-images-1" src="images/underline.png">
+                    </button>
+                    <button id="italic" class="style-buttons-1">
+                        <img  class="style-images-1" src="images/italic.png">
+                    </button>
+                    <div id="colorsRow">
+                        <input type="color" class="hidden" id="b-color">
+                        <img id="background-color" src="images/paint.png">
+                        
+                        <input type="color" class="hidden" id="f-color">
+                        <img id="font-color" src="images/pen.png">
+                    </div>
+                    
+                </div>
+                <p>Font</p>
+            </div>
+
+            <div id="align-col" class="externs2">
+                <button id="left" class="style-buttons-2">
+                    <img class="style-images-2" src="images/left_align.png">
+                </button>
+                <button id="center" class="style-buttons-2">
+                    <img  class="style-images-2"src="images/center_align.png">
+                </button>
+                <button id="right" class="style-buttons-2">
+                    <img  class="style-images-2"src ="images/right_align.png">
+                </button>
+                <p>Alignment</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="formula-container" class="formula-container">
+        <!-- <input type="button" value="fx" id="fx" class="input"> -->
+        <p id="fx">fx</p>
+        <input type="text" id="address-input" value="A1" class="input">
+        <input type="text" id="formula-input" class="input">
+
+    </div>
+
+    <div id="cell-container" class="cell-container">
+
+        <div id="topleft-cell" class="topleft-cell">
+            <img id = "triangle"src="images/triangle2.png">
+        </div>
+
+        <div id="top-row" class="top-row">
+            <%for(let i=0;i<cols;i++){%>
+            <div class="cell">
+                <%=String.fromCharCode(i+65)%>
+            </div>
+            <%}%>
+        </div>
+
+        <div id="left-col" class="left-col">
+            <%for(let j=0;j<rows;j++){%>
+            <div class="cell">
+                <%=j+1%>
+            </div>
+            <%}%>
+        </div>
+
+        <div id="grid" class="grid">
+
+            <%for(let i = 0;i<rows;i++){%>
+            <div class="row">
+                <%for(let j = 0;j<cols;j++){%>
+                <div class="cell" contenteditable="true" rid=<%=i%> cid=<%=j%>>Cell</div>
+                <%}%>
+            </div>
+            <%}%>
+            </div>
+
+        </div>
+
+        <div id="sheets" class="sheets">Sheets</div>
+
+        <script src="script.js"></script>
+
+</body>
+
+</html>

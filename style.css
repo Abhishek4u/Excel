@@ -1,0 +1,269 @@
+body,
+html {
+	margin: 0px;
+	padding: 0px;
+}
+* {
+	box-sizing: border-box;
+}
+.menu-container {
+	justify-content: space-around;
+	height: 30px;
+	width: auto;
+	display: flex;
+	/* background-color: lightblue; */
+
+	background: linear-gradient(-36deg, #c4e0e5, #4ca1af);
+	border-bottom: 1px solid darkred;
+}
+
+.menu {
+	width: 25%;
+	padding: 5px;
+	justify-content: center;
+	text-align: center;
+	height: 100%;
+}
+.menu:hover {
+	background-image: linear-gradient(153deg, teal 6%, #c2e9fb 89%);
+}
+
+.menu-active {
+	
+	background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+.menu:active {
+	/* background-color: #accbee; */
+	background-color: red;
+}
+
+.menu-option-container {
+	position: absolute;
+	top: 30px;
+	left: 0px;
+	height: calc(100vh - 30px);
+	width: 150px;
+	display: flex;
+	align-items: flex-start;
+
+	/* color: aquamarine; */
+	box-shadow: 4px 5px 8px -1px rgba(0, 0, 0, 0.53);
+	background: linear-gradient(15deg, teal, #02aab0);
+}
+
+.menu-options {
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-content: space-around;
+}
+
+.menu-options.active {
+	display: block;
+}
+
+.style-row button.active {
+	background-color: grey;
+}
+
+.externs {
+	margin: 35px 32px auto 32px;
+	height: 25%;
+	text-align: center;
+	color: black;
+	font-weight: bold;
+	font-family: cursive;
+	border-bottom: 1px solid black;
+}
+
+.externs2{
+	margin: 35px 22px auto 22px;
+    padding: 8px;
+    height: 23%;
+	border-bottom: 1px solid black;
+	text-align: center;
+    font-family: cursive;
+	font-weight: bolder;
+}
+
+.style-row{
+	height: 50%;
+}
+
+.font-row{
+	height: 30%;
+}
+.style-buttons-1{
+	width: 35%;
+	height: 28%;
+}
+
+#colorsRow{
+	height: 50%;
+	margin-top: 6px;
+}
+
+.hidden{
+	display: none;
+}
+
+#background-color{
+	height: 100%;
+	background-color: white;
+    border-radius: 8px;
+}
+#font-color{
+	height: 100%;
+	background-color: black;
+	border-radius: 8px;
+}
+.style-images-1{
+	height: 80%;
+}
+
+.style-buttons-2{
+	width: 45%;
+	height: 27%;
+}
+.style-images-2{
+	height: 80%;
+}
+
+
+
+
+
+#fx {
+	font-weight: bolder;
+	font-style: italic;
+	border-right: 2px solid lightblue;
+	height: 100%;
+	width: 12%;
+	text-align: center;
+	font-size: 31px;
+}
+
+.input {
+	width: 44%;
+	height: 100%;
+	border: 1px solid lightblue;
+	text-align: center;
+	font-size: 22px;
+}
+
+.formula-container {
+	width: calc(100vw - 170px);
+    height: 44px;
+    border: 2px inset lightblue;
+    border-radius: 8px;
+    position: relative;
+    left: 160px;
+    top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.cell-container {
+	height: calc(100vh - 110px);
+    width: calc(100vw - 160px);
+    overflow: auto;
+    position: relative;
+    left: 158px;
+    top: 15px;
+    background-color: aliceblue;
+}
+
+.sheets {
+	position: absolute;
+    left: 160px;
+    bottom: 0px;
+    height: 22px;
+    width: calc(100vw - 160px);
+    border: 2px inset darkgrey;
+    font-style: italic;
+}
+
+.topleft-cell {
+	margin: 0px 5px 5px 0px;
+	height: 25px;
+	width: 40px;
+	background-color: mintcream;
+	/* border: 1px solid aquamarine; */
+	border-right: 1px solid aquamarine;
+	border-bottom:1px solid aquamarine;
+	z-index: 3;
+	position: relative;
+	text-align: end;
+}
+
+.row {
+	display: flex;
+}
+
+.top-row {
+	display: flex;
+	position: absolute;
+	top: 0px;
+	left: 45px;
+	z-index: 1;
+	background-color: aquamarine;
+}
+
+.cell {
+	border: 1px solid;
+	min-width: 80px;
+	min-height: 25px;
+	text-align: center;
+	max-width: 80px;
+	border: 1px inset red;
+}
+
+.left-col .cell {
+	min-width: 40px !important;
+	max-width: 40px !important;
+	min-height: 30px !important;
+}
+
+.left-col {
+	position: absolute;
+	z-index: 1;
+	background-color: aquamarine;
+}
+
+.grid {
+	position: absolute;
+	top: 30px;
+	left: 45px;
+}
+
+.grid .cell {
+	min-height: 30px !important;
+}
+
+img {
+	height: 30%;
+	width: auto;
+}
+p {
+	height: 33%;
+}
+
+#triangle {
+	height: 100%;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track{
+    border: 1px solid gray;
+    background-color: rgba(34, 32, 32, 0.856);
+}
