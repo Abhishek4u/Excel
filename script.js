@@ -251,6 +251,13 @@ $(document).ready(function () {
             for (let j = 0; j < cells.length; j++) {
 
                 $(cells[j]).html("");
+                $(cells[j]).css({
+                    backgroundColor : "white",
+                    color : "black",
+                    fontSize: 16,
+                    align: "center",
+                    fontFamily: "arial"
+                })
                 let cell = {
                     value: "",
                     formula: "",
@@ -259,7 +266,7 @@ $(document).ready(function () {
                     bold: false,
                     underline: false,
                     italic: false,
-                    fontSize: 12,
+                    fontSize: 16,
                     fontFamily: "arial",
                     bColor: "white",
                     color: "black",
@@ -292,17 +299,17 @@ $(document).ready(function () {
                 let cell = db[i][j];
                 $(cells[j]).html(cell.value);
 
-                $(cell).css("bold", cell.bold ? "bold" : "normal");
-                $(cell).css("text-decoration", cell.underline ? "underline" : "none");
-                $(cell).css("font-style", cell.italic ? "italic" : "normal");
-                $(cell).css("font-size", cell.fontSize);
-                $(cell).css("font-family", cell.fontFamily);
-                $(cell).css("color", cell.color);
-                $(cell).css("background-color", cell.bColor);
+                $(cells[j]).css("bold", cell.bold ? "bold" : "normal");
+                $(cells[j]).css("text-decoration", cell.underline ? "underline" : "none");
+                $(cells[j]).css("font-style", cell.italic ? "italic" : "normal");
+                $(cells[j]).css("font-size", cell.fontSize);
+                $(cells[j]).css("font-family", cell.fontFamily);
+                $(cells[j]).css("color", cell.color);
+                $(cells[j]).css("background-color", cell.bColor);
 
-                if (cell.align == left) $(lsc).css("textAlign", "left");
-                else if (cell.align == right) $(lsc).css("textAlign", "right");
-                else $(lsc).css("textAlign", "center");
+                if (cell.align == left) $(cells[j]).css("textAlign", "left");
+                else if (cell.align == right) $(cells[j]).css("textAlign", "right");
+                else $(cells[j]).css("textAlign", "center");
             }
         }
     })
