@@ -63,9 +63,10 @@ html {
 	display: block;
 }
 
-.style-row button.active {
+.style-row button.active, #align-col button.active {
 	background-color: grey;
 }
+
 
 .externs {
 	margin: 35px 32px auto 32px;
@@ -80,7 +81,7 @@ html {
 .externs2{
 	margin: 35px 22px auto 22px;
     padding: 8px;
-    height: 23%;
+    height: 25%;
 	border-bottom: 1px solid black;
 	text-align: center;
     font-family: cursive;
@@ -94,9 +95,15 @@ html {
 .font-row{
 	height: 30%;
 }
+#font-size-div{
+	height: 100%;
+	margin-top: 3px;
+}
 .style-buttons-1{
 	width: 35%;
-	height: 28%;
+    height: 28%;
+    padding: 3px;
+    margin: 4px;
 }
 
 #colorsRow{
@@ -107,24 +114,26 @@ html {
 .hidden{
 	display: none;
 }
-
+.color{
+	height: 75%;
+    border-radius: 4px;
+	margin-bottom: 5px;
+	padding: 3px;
+}
 #background-color{
-	height: 100%;
-	background-color: white;
-    border-radius: 8px;
+    background-color: white;
 }
 #font-color{
-	height: 100%;
-	background-color: black;
-	border-radius: 8px;
+    background-color: black;
 }
 .style-images-1{
 	height: 80%;
 }
 
 .style-buttons-2{
-	width: 45%;
-	height: 27%;
+	width: 39%;
+    height: 20%;
+    margin: 3px;
 }
 .style-images-2{
 	height: 80%;
@@ -216,7 +225,7 @@ html {
 	min-height: 25px;
 	text-align: center;
 	max-width: 80px;
-	border: 1px inset red;
+	/* border: 1px inset red; */
 }
 
 .left-col .cell {
@@ -265,5 +274,5 @@ p {
 
 ::-webkit-scrollbar-track{
     border: 1px solid gray;
-    background-color: rgba(34, 32, 32, 0.856);
+    background-color: rgba(58, 57, 57, 0.856);
 }

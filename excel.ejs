@@ -51,15 +51,17 @@
                         <option value="monospace">Monospace</option>
                         <option value="serif">Serif</option>
                     </select>
-
-                    <select id="font-size">
-                        <option value="12">12</option>
-                        <option value="14">14</option>
-                        <option value="16">16</option>
-                        <option value="20">20</option>
-                        <option value="32">32</option>
-                    </select>
-                    
+                    <div id="font-size-div">
+                        <img id="font-size-decrease" src="images/decrease52.png">
+                        <select id="font-size">
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="16">16</option>
+                            <option value="20">20</option>
+                            <option value="32">32</option>
+                        </select>
+                        <img id="font-size-increase" src="images/increase52.png">
+                    </div>
                 </div>
 
                 <div class="style-row"  >
@@ -75,10 +77,10 @@
                     </button>
                     <div id="colorsRow">
                         <input type="color" class="hidden" id="b-color">
-                        <img id="background-color" src="images/paint.png">
+                        <img id="background-color" class="color" src="images/paint.png">
                         
                         <input type="color" class="hidden" id="f-color">
-                        <img id="font-color" src="images/pen.png">
+                        <img id="font-color" class="color" src="images/pen.png">
                     </div>
                     
                 </div>

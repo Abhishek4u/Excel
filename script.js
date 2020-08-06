@@ -23,6 +23,7 @@ $(document).ready(function () {
 
         $("#formula-input").val(cellObject.formula);
 
+        lsc = this;
         // for highlighting col and row
         changeLeftAndTopColor(lastOne.rowId, lastOne.colId, "aquamarine");
         changeLeftAndTopColor(rowId, colId, "#4EDAAB");
@@ -31,7 +32,175 @@ $(document).ready(function () {
             colId: colId
         }
 
+        // Making btns active or not
+        if (cellObject.bold) {
+            $("#bold").addClass("active")
+        } else {
+            $("#bold").removeClass("active")
+        }
+        if (cellObject.underline) {
+            $("#underline").addClass("active")
+        } else {
+            $("#underline").removeClass("active")
+        }
+        if (cellObject.italic) {
+            $("#italic").addClass("active")
+        } else {
+            $("#italic").removeClass("active")
+        }
+
+        if (cellObject.align == "left") {
+            $("#left").addClass("active");
+            $("#right").removeClass("active")
+            $("#center").removeClass("active")
+
+        } else if (cellObject.align == "center") {
+            $("#center").addClass("active")
+            $("#left").removeClass("active");
+            $("#right").removeClass("active")
+        } else {
+            $("#right").addClass("active")
+            $("#left").removeClass("active");
+            $("#center").removeClass("active")
+        }
+
+        $("#background-color").css("background-color", cellObject.bColor);
+
+        $("#font-color").css("background-color", cellObject.color);
     })
+
+
+
+    $("#bold").on("click", function () {
+        $(this).toggleClass("active");
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-weight", cellObject.bold ? "normal" : "bold");
+        cellObject.bold = !cellObject.bold;
+    })
+
+    $("#underline").on("click", function () {
+        $(this).toggleClass("active");
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("text-decoration", cellObject.underline ? "none" : "underline");
+        cellObject.underline = !cellObject.underline;
+    })
+
+    $("#italic").on("click", function () {
+        $(this).toggleClass("active");
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-style", cellObject.italic ? "normal" : "italic");
+        cellObject.italic = !cellObject.italic;
+    })
+
+    $("#font-family").on("change", function () {
+        let fFam = $(this).val();
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-family", fFam);
+        cellObject.fontFamily = fFam;
+
+        changeHeightOfLeftCol(rowId, colId);
+    })
+
+    $("#font-size").on("change", function () {
+        let fSize = $(this).val();
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("font-size", fSize + "px");
+        cellObject.fontSize = fSize;
+
+        changeHeightOfLeftCol(rowId, colId);
+    })
+
+    $("#b-color").on("change", function () {
+        let bColor = $(this).val();
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("background-color", bColor);
+        cellObject.bColor = bColor;
+
+        $("#background-color").css("background-color", bColor);
+    })
+
+    $("#f-color").on("change", function () {
+        let color = $(this).val();
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+        $(lsc).css("color", color);
+        cellObject.color = color;
+
+        $("#font-color").css("background-color", color);
+    })
+
+    $("#font-size-increase").on("click", function () {
+
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+
+        let fSize = cellObject.fontSize;
+        fSize = fSize < 38 ? fSize + 2 : fSize;
+        console.log(fSize);
+
+        $(lsc).css("font-size", fSize + "px");
+        cellObject.fontSize = fSize;
+
+        changeHeightOfLeftCol(rowId, colId);
+    })
+
+    $("#font-size-decrease").on("click", function () {
+
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+
+        let fSize = cellObject.fontSize;
+        fSize = fSize > 14 ? fSize - 2 : fSize;
+
+        $(lsc).css("font-size", fSize + "px");
+        cellObject.fontSize = fSize;
+
+        changeHeightOfLeftCol(rowId, colId);
+    })
+
+    // Alignment
+    $("#left").on("click", function () {
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+
+        $(lsc).css("textAlign", "left");
+        cellObject.align = "left";
+
+        $("#left").addClass("active");
+        $("#right").removeClass("active")
+        $("#center").removeClass("active")
+    })
+
+    $("#center").on("click", function () {
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+
+        $(lsc).css("textAlign", "center");
+        cellObject.align = "center";
+
+        $("#center").addClass("active")
+        $("#left").removeClass("active");
+        $("#right").removeClass("active")
+    })
+
+    $("#right").on("click", function () {
+        let { rowId, colId } = getRowColFromElem(lsc);
+        let cellObject = db[rowId][colId];
+
+        $(lsc).css("textAlign", "right");
+        cellObject.align = "right";
+
+        $("#right").addClass("active")
+        $("#left").removeClass("active");
+        $("#center").removeClass("active")
+    })
+
 
     $("#grid .cell").keyup(function () {
         let height = $(this).height();
@@ -89,7 +258,13 @@ $(document).ready(function () {
                     parents: [],
                     bold: false,
                     underline: false,
-                    italic: false
+                    italic: false,
+                    fontSize: 12,
+                    fontFamily: "arial",
+                    bColor: "white",
+                    color: "black",
+                    align: "center"
+
                 };
                 row.push(cell);
             }
@@ -114,7 +289,20 @@ $(document).ready(function () {
 
             let cells = $(allRows[i]).find(".cell");
             for (let j = 0; j < cells.length; j++) {
-                $(cells[j]).html(db[i][j].value);
+                let cell = db[i][j];
+                $(cells[j]).html(cell.value);
+
+                $(cell).css("bold", cell.bold ? "bold" : "normal");
+                $(cell).css("text-decoration", cell.underline ? "underline" : "none");
+                $(cell).css("font-style", cell.italic ? "italic" : "normal");
+                $(cell).css("font-size", cell.fontSize);
+                $(cell).css("font-family", cell.fontFamily);
+                $(cell).css("color", cell.color);
+                $(cell).css("background-color", cell.bColor);
+
+                if (cell.align == left) $(lsc).css("textAlign", "left");
+                else if (cell.align == right) $(lsc).css("textAlign", "right");
+                else $(lsc).css("textAlign", "center");
             }
         }
     })
@@ -200,25 +388,6 @@ $(document).ready(function () {
         cellObject.formula = "";
     }
 
-    function updateCell(rowId, colId, ans) {
-
-        // Recursive function to update values
-
-        $(`#grid .cell[rid=${rowId}][cid=${colId}]`).html(ans);
-
-        changeHeightOfLeftCol(rowId, colId);
-
-        let cellObject = db[rowId][colId];
-        cellObject.value = ans;
-
-        for (let i = 0; i < cellObject.children.length; i++) {
-            let childRowCol = cellObject.children[i];
-            let childObj = db[childRowCol.rowId][childRowCol.colId];
-            let childAns = evaluate(childObj.formula);
-            updateCell(childRowCol.rowId, childRowCol.colId, childAns);
-        }
-    }
-
     function evaluate(formula) {
 
         formula = formula.replace(/\s+/g, " ").trim();
@@ -272,6 +441,27 @@ $(document).ready(function () {
 
     }
 
+    function updateCell(rowId, colId, ans) {
+
+        // Recursive function to update values
+
+        $(`#grid .cell[rid=${rowId}][cid=${colId}]`).html(ans);
+
+        changeHeightOfLeftCol(rowId, colId);
+
+        let cellObject = db[rowId][colId];
+        cellObject.value = ans;
+
+        for (let i = 0; i < cellObject.children.length; i++) {
+            let childRowCol = cellObject.children[i];
+            let childObj = db[childRowCol.rowId][childRowCol.colId];
+            let childAns = evaluate(childObj.formula);
+            updateCell(childRowCol.rowId, childRowCol.colId, childAns);
+        }
+    }
+
+
+
     function getRowColFromAddr(cellAddress) {
 
         let ascii = cellAddress.charCodeAt(0);
@@ -282,6 +472,13 @@ $(document).ready(function () {
             rowId: rowId,
             colId: colId
         }
+    }
+
+    function getRowColFromElem(elt) {
+        let rowId = $(elt).attr("rid");
+        let colId = $(elt).attr("cid");
+
+        return { rowId, colId };
     }
 
     function changeHeightOfLeftCol(rowId, colId) {
@@ -310,6 +507,7 @@ $(document).ready(function () {
 
     }
 
+
     $("#background-color").click(function () {
         $("#b-color").trigger("click");
 
@@ -322,10 +520,10 @@ $(document).ready(function () {
     });
 
 
-function init() {
-    $("#File").trigger("click");
-    $("#new").trigger("click");
-}
+    function init() {
+        $("#File").trigger("click");
+        $("#new").trigger("click");
+    }
 
-init();
+    init();
 })
